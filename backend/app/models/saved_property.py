@@ -1,0 +1,1 @@
+"""Saved property database model."""

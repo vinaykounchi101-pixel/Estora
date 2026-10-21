@@ -1,0 +1,1 @@
+"""Property database model."""

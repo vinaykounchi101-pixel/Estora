@@ -1,0 +1,1 @@
+"""Historical prediction database model."""
