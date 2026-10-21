@@ -15,10 +15,14 @@ Tracks session progress, completed milestones, and pending tasks.
   - `ml/`: Offline training pipeline, datasets partition (`raw`, `interim`, `processed`), thin CLI entry points, and reusable `real_estate_ml` core package.
   - `docs/`: Requirements, architecture specifications, design system, ML documentation, progress log, and technical decisions.
   - `data/`, `deployment/`, `scripts/`, `.github/workflows/`, and root project configs (`.gitignore`, `.env.example`, `Makefile`, `README.md`, `LICENSE`).
-- [x] Preserved and mirrored `PRD.md` and `SRS.md` under `docs/requirements/`.
+- [x] Initialized Git repository, committed clean baseline scaffold to `main`.
+- [x] Created persistent integration branch `dev` off `main`.
+- [x] Codified Rule 9 (Branching, Autonomous Self-Approval, and Cleanup) and Rule 8 WIP exception in `AGENTS.md`.
 
 ### Current State
-- Repository structure initialized and validated across all subsystems.
+- Repository structure initialized and tracked cleanly across all subsystems.
+- Active on branch `dev`.
+
 - All leaf directories tracked via `.gitkeep` or initial stub modules.
 - Environment templates (`.env.example`) created for root, frontend, and backend.
 
