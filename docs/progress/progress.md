@@ -18,15 +18,15 @@ Tracks session progress, completed milestones, and pending tasks.
 - [x] Initialized Git repository, committed clean baseline scaffold to `main`.
 - [x] Created persistent integration branch `dev` off `main`.
 - [x] Codified Rule 9 (Branching, Autonomous Self-Approval, and Cleanup) and Rule 8 WIP exception in `AGENTS.md`.
+- [x] Documented Design System comparisons (PRD, `docs/design-tokens.md`, `docs/design-system/`) and generated high-fidelity whole-website mockups in artifacts.
+- [x] Established Architectural Decision Records ADR-001, ADR-002, and ADR-003 in `docs/technical/technical_decisions.md`.
 
 ### Current State
-- Repository structure initialized and tracked cleanly across all subsystems.
-- Active on branch `dev`.
+- Repository structure fully initialized and tracked cleanly across all subsystems.
+- Active on branch `dev` (synchronized with `main`).
+- Working tree clean.
 
-- All leaf directories tracked via `.gitkeep` or initial stub modules.
-- Environment templates (`.env.example`) created for root, frontend, and backend.
-
-### Next Steps
+### Next Session Priorities
 1. Select candidate residential datasets for sale-price and monthly-rent workflows.
 2. Execute data audit and exploratory analysis (`ml/training/notebooks/01_data_audit.ipynb` or CLI scripts).
 3. Set up backend database connection & baseline Alembic migration.
