@@ -54,3 +54,41 @@ Records architectural decision records (ADRs), rationales, and technical trade-o
   - Zero external blocking delays.
   - Clean, unpolluted branch namespace.
   - Preserves history and guarantees that only verified work touches `dev`.
+
+---
+
+## ADR-004: Residential Sale-Price Model Selection & Validation Protocol
+
+- **Date:** 2026-10-22
+- **Status:** Approved
+- **Context:**
+  Accurately estimating residential property sale prices in Pune requires handling strong geographic concentration, non-linear feature interactions, and skewed price distributions without spatial data leakage.
+- **Decision:**
+  - Evaluate models using 5-Fold `GroupKFold` cross-validation grouped strictly on `locality` to prevent neighborhood records leaking between train and validation folds.
+  - Apply `TransformedTargetRegressor` with `log1p`/`expm1` to model logarithmic price elasticity while evaluating errors in real INR Lakhs.
+  - Select `HistGradientBoostingRegressor(log1p)` based on lowest held-out error (CV MAE: ₹16.07L ± 0.98L, Holdout MAE: ₹17.35L, $R^2$: 0.8066) compared to linear and tree baselines.
+  - Bundle preprocessing (`StandardScaler`, `OneHotEncoder(handle_unknown='ignore')`) and estimator into an atomic serialized pipeline (`.joblib`) with a companion metadata manifest JSON.
+- **Consequences:**
+  - Robust generalization across known and unseen localities.
+  - Guarantees positive price outputs with zero training-serving skew.
+
+---
+
+## ADR-005: Relational Database Architecture & Fixed-Precision Financial Schema
+
+- **Date:** 2026-10-22
+- **Status:** Approved
+- **Context:**
+  FastAPI application persistence requires a secure, scalable relational database foundation for user authentication, historical predictions, and model registry metadata.
+- **Decision:**
+  - Use PostgreSQL managed via SQLAlchemy 2.0 ORM and Alembic migrations.
+  - Use `UUIDv4` primary keys for external-facing entities to eliminate ID enumeration attacks.
+  - Store monetary figures strictly as `Numeric(14, 2)` with mandatory ISO currency codes (`INR`) and scale units (`lakhs`), prohibiting floating-point types for monetary values.
+  - Store immutable snapshots of inference input features (`JSON`) with predictions to preserve historical auditability.
+  - Separate `sale_price` and `monthly_rent` targets explicitly via `prediction_type` column.
+  - Strictly prohibit raw dataset records and serialized ML binaries from being stored in PostgreSQL (only metadata and verified filesystem paths are stored).
+- **Consequences:**
+  - High financial precision and audit fidelity.
+  - Zero binary bloat in the relational database.
+  - Seamless testing against in-memory SQLite and migration execution against production PostgreSQL.
+

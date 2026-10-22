@@ -1,0 +1,56 @@
+{
+  "pipeline_name": "pune_residential_sale_data_preparation",
+  "version": "1.0.0",
+  "source_archive": "E:\\Projects\\Estora\\ml\\training\\data\\raw\\real_estate_dataset_cleaned (1).zip",
+  "source_internal_entry": "processed/train_cleaned.csv",
+  "output_dataset": "E:\\Projects\\Estora\\ml\\training\\data\\processed\\pune_sale_prices.csv",
+  "target_variable": "target_price_lakhs",
+  "target_currency_units": "INR Lakhs",
+  "geographic_scope": {
+    "target_city": "Pune",
+    "accepted_latitude_bounds": [
+      17.8,
+      19.3
+    ],
+    "accepted_longitude_bounds": [
+      73.2,
+      75.2
+    ]
+  },
+  "filters_applied": {
+    "min_area_sqft": 150.0,
+    "max_area_sqft": 8000.0,
+    "max_price_lakhs": 1500.0
+  },
+  "accounting": {
+    "initial_rows": 29050,
+    "missing_required_columns": 0,
+    "stage_1_address_selection": {
+      "retained": 1980,
+      "excluded_non_pune": 27070
+    },
+    "stage_2_geographic_validation": {
+      "retained": 1846,
+      "excluded_blank_coordinates": 6,
+      "excluded_out_of_state": 53,
+      "excluded_out_of_district": 75,
+      "total_excluded_geo": 134
+    },
+    "stage_3_target_validation": {
+      "retained": 1836,
+      "excluded_invalid_or_non_positive": 0,
+      "excluded_above_1500_lakhs": 10
+    },
+    "stage_4_area_validation": {
+      "retained": 1833,
+      "excluded_below_150_sqft": 1,
+      "excluded_above_8000_sqft": 2
+    },
+    "stage_5_deduplication": {
+      "retained": 1833,
+      "excluded_duplicates": 0
+    },
+    "final_processed_rows": 1833,
+    "total_records_filtered_out": 27217
+  }
+}
