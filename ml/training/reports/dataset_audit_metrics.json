@@ -1,0 +1,1468 @@
+{
+  "status": "success",
+  "data_dir": "E:\\Projects\\Estora\\ml\\training\\data\\raw",
+  "total_files": 9,
+  "optional_dependencies": {
+    "pandas": null,
+    "openpyxl": null,
+    "xlrd": null
+  },
+  "files": [
+    {
+      "filename": "House_Rent_Dataset.csv",
+      "format": "CSV",
+      "file_size": 562214,
+      "file_size_formatted": "549.04 KB",
+      "row_count": 4746,
+      "col_count": 12,
+      "columns": [
+        {
+          "name": "Posted On",
+          "inferred_type": "Date/Time",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_count": 81
+        },
+        {
+          "name": "BHK",
+          "inferred_type": "Integer",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_count": 6,
+          "numeric_min": 1.0,
+          "numeric_max": 6.0,
+          "numeric_mean": 2.08
+        },
+        {
+          "name": "Rent",
+          "inferred_type": "Integer",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_count": 243,
+          "numeric_min": 1200.0,
+          "numeric_max": 3500000.0,
+          "numeric_mean": 34993.45
+        },
+        {
+          "name": "Size",
+          "inferred_type": "Integer",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_count": 615,
+          "numeric_min": 10.0,
+          "numeric_max": 8000.0,
+          "numeric_mean": 967.49
+        },
+        {
+          "name": "Floor",
+          "inferred_type": "String",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_count": 480,
+          "numeric_min": 1.0,
+          "numeric_max": 3.0,
+          "numeric_mean": 1.67
+        },
+        {
+          "name": "Area Type",
+          "inferred_type": "Categorical",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_count": 3
+        },
+        {
+          "name": "Area Locality",
+          "inferred_type": "String",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_count": 2234,
+          "numeric_min": 5000.0,
+          "numeric_max": 700051.0,
+          "numeric_mean": 352525.5
+        },
+        {
+          "name": "City",
+          "inferred_type": "Categorical",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_count": 6
+        },
+        {
+          "name": "Furnishing Status",
+          "inferred_type": "Categorical",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_count": 3
+        },
+        {
+          "name": "Tenant Preferred",
+          "inferred_type": "Categorical",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_count": 3
+        },
+        {
+          "name": "Bathroom",
+          "inferred_type": "Integer",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_count": 8,
+          "numeric_min": 1.0,
+          "numeric_max": 10.0,
+          "numeric_mean": 1.97
+        },
+        {
+          "name": "Point of Contact",
+          "inferred_type": "Categorical",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_count": 3
+        }
+      ],
+      "duplicate_rows": 0,
+      "target_candidates": [
+        "Rent"
+      ],
+      "locality_distribution": {
+        "Mumbai": 972,
+        "Chennai": 891,
+        "Bangalore": 886,
+        "Hyderabad": 868,
+        "Delhi": 605,
+        "Kolkata": 524
+      }
+    },
+    {
+      "filename": "Indian_House_Rent.ipynb",
+      "format": "Jupyter Notebook",
+      "file_size": 680242,
+      "file_size_formatted": "664.30 KB",
+      "note": "Supplementary exploratory/pipeline notebook file present in raw directory."
+    },
+    {
+      "filename": "Indian_House_Rent_Dataset.csv",
+      "format": "CSV",
+      "file_size": 556285,
+      "file_size_formatted": "543.25 KB",
+      "row_count": 4746,
+      "col_count": 12,
+      "columns": [
+        {
+          "name": "Posted On",
+          "inferred_type": "Date/Time",
+          "missing_count": 662,
+          "missing_pct": 13.95,
+          "distinct_count": 81
+        },
+        {
+          "name": "BHK",
+          "inferred_type": "Categorical",
+          "missing_count": 783,
+          "missing_pct": 16.5,
+          "distinct_count": 12,
+          "numeric_min": 1.0,
+          "numeric_max": 6.0,
+          "numeric_mean": 2.09
+        },
+        {
+          "name": "Size",
+          "inferred_type": "Float",
+          "missing_count": 920,
+          "missing_pct": 19.38,
+          "distinct_count": 588,
+          "numeric_min": 10.0,
+          "numeric_max": 7000.0,
+          "numeric_mean": 965.21
+        },
+        {
+          "name": "Floor",
+          "inferred_type": "String",
+          "missing_count": 786,
+          "missing_pct": 16.56,
+          "distinct_count": 433,
+          "numeric_min": 1.0,
+          "numeric_max": 3.0,
+          "numeric_mean": 1.67
+        },
+        {
+          "name": "Area Type",
+          "inferred_type": "Categorical",
+          "missing_count": 942,
+          "missing_pct": 19.85,
+          "distinct_count": 5
+        },
+        {
+          "name": "Area Locality",
+          "inferred_type": "String",
+          "missing_count": 600,
+          "missing_pct": 12.64,
+          "distinct_count": 2016,
+          "numeric_min": 5000.0,
+          "numeric_max": 700051.0,
+          "numeric_mean": 352525.5
+        },
+        {
+          "name": "City",
+          "inferred_type": "String",
+          "missing_count": 655,
+          "missing_pct": 13.8,
+          "distinct_count": 360
+        },
+        {
+          "name": "Furnishing Status",
+          "inferred_type": "Categorical",
+          "missing_count": 704,
+          "missing_pct": 14.83,
+          "distinct_count": 3
+        },
+        {
+          "name": "Tenant Preferred",
+          "inferred_type": "String",
+          "missing_count": 652,
+          "missing_pct": 13.74,
+          "distinct_count": 4051
+        },
+        {
+          "name": "Bathroom",
+          "inferred_type": "Categorical",
+          "missing_count": 541,
+          "missing_pct": 11.4,
+          "distinct_count": 13,
+          "numeric_min": 1.0,
+          "numeric_max": 10.0,
+          "numeric_mean": 1.95
+        },
+        {
+          "name": "Point of Contact",
+          "inferred_type": "Categorical",
+          "missing_count": 609,
+          "missing_pct": 12.83,
+          "distinct_count": 2
+        },
+        {
+          "name": "Rent",
+          "inferred_type": "Integer",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_count": 243,
+          "numeric_min": 1200.0,
+          "numeric_max": 3500000.0,
+          "numeric_mean": 34993.45
+        }
+      ],
+      "duplicate_rows": 0,
+      "target_candidates": [
+        "Rent"
+      ],
+      "locality_distribution": {
+        "India-, Mumbai": 24,
+        "India-( Bangalore": 23,
+        "India-\\ Mumbai": 22,
+        "India-@ Mumbai": 22,
+        "|-9 Mumbai": 22,
+        "--9 Mumbai": 22,
+        "India-( Chennai": 22,
+        "India-@ Chennai": 22,
+        "&-9 Chennai": 21,
+        "@-9 Mumbai": 20,
+        "India-: Mumbai": 20,
+        "%-9 Bangalore": 20,
+        "India-_ Bangalore": 20,
+        "@-9 Hyderabad": 20,
+        "India-] Mumbai": 19
+      }
+    },
+    {
+      "filename": "Pune house price prediction.ipynb",
+      "format": "Jupyter Notebook",
+      "file_size": 157952,
+      "file_size_formatted": "154.25 KB",
+      "note": "Supplementary exploratory/pipeline notebook file present in raw directory."
+    },
+    {
+      "filename": "Pune_House_Data.csv",
+      "format": "CSV",
+      "file_size": 917208,
+      "file_size_formatted": "895.71 KB",
+      "row_count": 13320,
+      "col_count": 9,
+      "columns": [
+        {
+          "name": "area_type",
+          "inferred_type": "Categorical",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_count": 4
+        },
+        {
+          "name": "availability",
+          "inferred_type": "String",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_count": 81
+        },
+        {
+          "name": "size",
+          "inferred_type": "String",
+          "missing_count": 16,
+          "missing_pct": 0.12,
+          "distinct_count": 31
+        },
+        {
+          "name": "society",
+          "inferred_type": "String",
+          "missing_count": 5502,
+          "missing_pct": 41.31,
+          "distinct_count": 2688
+        },
+        {
+          "name": "total_sqft",
+          "inferred_type": "String",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_count": 2117,
+          "numeric_min": 1.0,
+          "numeric_max": 52272.0,
+          "numeric_mean": 1554.94
+        },
+        {
+          "name": "bath",
+          "inferred_type": "Integer",
+          "missing_count": 73,
+          "missing_pct": 0.55,
+          "distinct_count": 19,
+          "numeric_min": 1.0,
+          "numeric_max": 40.0,
+          "numeric_mean": 2.69
+        },
+        {
+          "name": "balcony",
+          "inferred_type": "Integer",
+          "missing_count": 609,
+          "missing_pct": 4.57,
+          "distinct_count": 4,
+          "numeric_min": 0.0,
+          "numeric_max": 3.0,
+          "numeric_mean": 1.58
+        },
+        {
+          "name": "price",
+          "inferred_type": "Float",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_count": 1994,
+          "numeric_min": 8.0,
+          "numeric_max": 3600.0,
+          "numeric_mean": 112.57
+        },
+        {
+          "name": "site_location",
+          "inferred_type": "String",
+          "missing_count": 1,
+          "missing_pct": 0.01,
+          "distinct_count": 97
+        }
+      ],
+      "duplicate_rows": 11,
+      "target_candidates": [
+        "price"
+      ],
+      "locality_distribution": {
+        "Alandi Road": 139,
+        "Ambegaon Budruk": 139,
+        "Anandnagar": 139,
+        "Aundh": 139,
+        "Aundh Road": 139,
+        "Balaji Nagar": 139,
+        "Baner": 139,
+        "Baner road": 139,
+        "Bhandarkar Road": 139,
+        "Bhavani Peth": 139,
+        "Bibvewadi": 139,
+        "Bopodi": 139,
+        "Budhwar Peth": 139,
+        "Bund Garden Road": 139,
+        "Camp": 139
+      }
+    },
+    {
+      "filename": "house-rental-prediction-machine-learning.ipynb",
+      "format": "Jupyter Notebook",
+      "file_size": 306750,
+      "file_size_formatted": "299.56 KB",
+      "note": "Supplementary exploratory/pipeline notebook file present in raw directory."
+    },
+    {
+      "filename": "indian-urban-house-price-prediction.zip",
+      "format": "ZIP",
+      "file_size": 2905797,
+      "file_size_formatted": "2.77 MB",
+      "entries": [
+        {
+          "name": "metaData.csv",
+          "size_bytes": 1401,
+          "size_formatted": "1.37 KB",
+          "csv_audit": {
+            "filename": "metaData.csv",
+            "format": "CSV",
+            "file_size": 1401,
+            "file_size_formatted": "1.37 KB",
+            "row_count": 18,
+            "col_count": 7,
+            "columns": [
+              {
+                "name": "Column_Name",
+                "inferred_type": "String",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 18
+              },
+              {
+                "name": "Description",
+                "inferred_type": "String",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 18
+              },
+              {
+                "name": "Data_Type",
+                "inferred_type": "Categorical",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 5
+              },
+              {
+                "name": "Feature_Type",
+                "inferred_type": "Categorical",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 3
+              },
+              {
+                "name": "Present_In_Train",
+                "inferred_type": "Categorical",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 1
+              },
+              {
+                "name": "Present_In_Test",
+                "inferred_type": "Categorical",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2
+              },
+              {
+                "name": "Is_Target",
+                "inferred_type": "Categorical",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2
+              }
+            ],
+            "duplicate_rows": 0,
+            "target_candidates": [],
+            "locality_distribution": {}
+          }
+        },
+        {
+          "name": "sample_submission.csv",
+          "size_bytes": 360028,
+          "size_formatted": "351.59 KB",
+          "csv_audit": {
+            "filename": "sample_submission.csv",
+            "format": "CSV",
+            "file_size": 360028,
+            "file_size_formatted": "351.59 KB",
+            "row_count": 20000,
+            "col_count": 2,
+            "columns": [
+              {
+                "name": "Property_ID",
+                "inferred_type": "String",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 5000
+              },
+              {
+                "name": "Price_INR_Lakhs",
+                "inferred_type": "Float",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 1,
+                "numeric_min": 100.0,
+                "numeric_max": 100.0,
+                "numeric_mean": 100.0
+              }
+            ],
+            "duplicate_rows": 0,
+            "target_candidates": [
+              "Price_INR_Lakhs"
+            ],
+            "locality_distribution": {}
+          }
+        },
+        {
+          "name": "test.csv",
+          "size_bytes": 1949203,
+          "size_formatted": "1.86 MB",
+          "csv_audit": {
+            "filename": "test.csv",
+            "format": "CSV",
+            "file_size": 1949203,
+            "file_size_formatted": "1.86 MB",
+            "row_count": 20000,
+            "col_count": 17,
+            "columns": [
+              {
+                "name": "Property_ID",
+                "inferred_type": "String",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 5000
+              },
+              {
+                "name": "City",
+                "inferred_type": "Categorical",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 10
+              },
+              {
+                "name": "Locality_Type",
+                "inferred_type": "Categorical",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 3
+              },
+              {
+                "name": "Property_Type",
+                "inferred_type": "Categorical",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 4
+              },
+              {
+                "name": "BHK",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 6,
+                "numeric_min": 1.0,
+                "numeric_max": 6.0,
+                "numeric_mean": 2.83
+              },
+              {
+                "name": "Bathrooms",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 6,
+                "numeric_min": 1.0,
+                "numeric_max": 6.0,
+                "numeric_mean": 3.31
+              },
+              {
+                "name": "Super_Area_SqFt",
+                "inferred_type": "Float",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 5000,
+                "numeric_min": 6.1,
+                "numeric_max": 4249.97,
+                "numeric_mean": 1419.7
+              },
+              {
+                "name": "Carpet_Area_SqFt",
+                "inferred_type": "Float",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 5000,
+                "numeric_min": 4.48,
+                "numeric_max": 3271.34,
+                "numeric_mean": 1064.67
+              },
+              {
+                "name": "Floor_Number",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 44,
+                "numeric_min": 0.0,
+                "numeric_max": 43.0,
+                "numeric_mean": 10.79
+              },
+              {
+                "name": "Total_Floors",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 44,
+                "numeric_min": 1.0,
+                "numeric_max": 44.0,
+                "numeric_mean": 22.39
+              },
+              {
+                "name": "Age_of_Property",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 40,
+                "numeric_min": 0.0,
+                "numeric_max": 39.0,
+                "numeric_mean": 19.48
+              },
+              {
+                "name": "Furnishing_Status",
+                "inferred_type": "Categorical",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 3
+              },
+              {
+                "name": "Parking",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2,
+                "numeric_min": 0.0,
+                "numeric_max": 1.0,
+                "numeric_mean": 0.65
+              },
+              {
+                "name": "Lift_Available",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2,
+                "numeric_min": 0.0,
+                "numeric_max": 1.0,
+                "numeric_mean": 0.95
+              },
+              {
+                "name": "Gated_Community",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2,
+                "numeric_min": 0.0,
+                "numeric_max": 1.0,
+                "numeric_mean": 0.56
+              },
+              {
+                "name": "Distance_to_Metro_km",
+                "inferred_type": "Float",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 872,
+                "numeric_min": 0.0,
+                "numeric_max": 10.89,
+                "numeric_mean": 3.11
+              },
+              {
+                "name": "Distance_to_City_Center_km",
+                "inferred_type": "Float",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 1947,
+                "numeric_min": 0.0,
+                "numeric_max": 23.19,
+                "numeric_mean": 9.08
+              }
+            ],
+            "duplicate_rows": 0,
+            "target_candidates": [],
+            "locality_distribution": {
+              "Chandigarh": 2111,
+              "Ahmedabad": 2050,
+              "Chennai": 2027,
+              "Kolkata": 2022,
+              "Jaipur": 2018,
+              "Pune": 2004,
+              "Delhi": 1977,
+              "Bangalore": 1951,
+              "Hyderabad": 1929,
+              "Mumbai": 1911
+            }
+          }
+        },
+        {
+          "name": "train.csv",
+          "size_bytes": 8335049,
+          "size_formatted": "7.95 MB",
+          "csv_audit": {
+            "filename": "train.csv",
+            "format": "CSV",
+            "file_size": 8335049,
+            "file_size_formatted": "7.95 MB",
+            "row_count": 80000,
+            "col_count": 18,
+            "columns": [
+              {
+                "name": "Property_ID",
+                "inferred_type": "String",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 5000
+              },
+              {
+                "name": "City",
+                "inferred_type": "Categorical",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 10
+              },
+              {
+                "name": "Locality_Type",
+                "inferred_type": "Categorical",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 3
+              },
+              {
+                "name": "Property_Type",
+                "inferred_type": "Categorical",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 4
+              },
+              {
+                "name": "BHK",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 6,
+                "numeric_min": 1.0,
+                "numeric_max": 6.0,
+                "numeric_mean": 2.83
+              },
+              {
+                "name": "Bathrooms",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 6,
+                "numeric_min": 1.0,
+                "numeric_max": 6.0,
+                "numeric_mean": 3.32
+              },
+              {
+                "name": "Super_Area_SqFt",
+                "inferred_type": "Float",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 5000,
+                "numeric_min": 16.02,
+                "numeric_max": 4502.97,
+                "numeric_mean": 1409.51
+              },
+              {
+                "name": "Carpet_Area_SqFt",
+                "inferred_type": "Float",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 5000,
+                "numeric_min": 11.51,
+                "numeric_max": 3578.25,
+                "numeric_mean": 1057.01
+              },
+              {
+                "name": "Floor_Number",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 44,
+                "numeric_min": 0.0,
+                "numeric_max": 43.0,
+                "numeric_mean": 10.74
+              },
+              {
+                "name": "Total_Floors",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 44,
+                "numeric_min": 1.0,
+                "numeric_max": 44.0,
+                "numeric_mean": 22.46
+              },
+              {
+                "name": "Age_of_Property",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 40,
+                "numeric_min": 0.0,
+                "numeric_max": 39.0,
+                "numeric_mean": 19.45
+              },
+              {
+                "name": "Furnishing_Status",
+                "inferred_type": "Categorical",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 3
+              },
+              {
+                "name": "Parking",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2,
+                "numeric_min": 0.0,
+                "numeric_max": 1.0,
+                "numeric_mean": 0.65
+              },
+              {
+                "name": "Lift_Available",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2,
+                "numeric_min": 0.0,
+                "numeric_max": 1.0,
+                "numeric_mean": 0.95
+              },
+              {
+                "name": "Gated_Community",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2,
+                "numeric_min": 0.0,
+                "numeric_max": 1.0,
+                "numeric_mean": 0.55
+              },
+              {
+                "name": "Distance_to_Metro_km",
+                "inferred_type": "Float",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 963,
+                "numeric_min": 0.0,
+                "numeric_max": 11.63,
+                "numeric_mean": 3.12
+              },
+              {
+                "name": "Distance_to_City_Center_km",
+                "inferred_type": "Float",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2144,
+                "numeric_min": 0.0,
+                "numeric_max": 25.39,
+                "numeric_mean": 9.01
+              },
+              {
+                "name": "Price_INR_Lakhs",
+                "inferred_type": "Float",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 5000,
+                "numeric_min": 2.765306238114096,
+                "numeric_max": 3334.9152078327324,
+                "numeric_mean": 142.61
+              }
+            ],
+            "duplicate_rows": 0,
+            "target_candidates": [
+              "Price_INR_Lakhs"
+            ],
+            "locality_distribution": {
+              "Bangalore": 8189,
+              "Chennai": 8150,
+              "Hyderabad": 8060,
+              "Delhi": 8037,
+              "Mumbai": 8024,
+              "Jaipur": 8002,
+              "Ahmedabad": 7982,
+              "Chandigarh": 7873,
+              "Kolkata": 7850,
+              "Pune": 7833
+            }
+          }
+        }
+      ]
+    },
+    {
+      "filename": "pune-house-price-prediction.ipynb",
+      "format": "Jupyter Notebook",
+      "file_size": 53593,
+      "file_size_formatted": "52.34 KB",
+      "note": "Supplementary exploratory/pipeline notebook file present in raw directory."
+    },
+    {
+      "filename": "real_estate_dataset_cleaned (1).zip",
+      "format": "ZIP",
+      "file_size": 4241047,
+      "file_size_formatted": "4.04 MB",
+      "entries": [
+        {
+          "name": "CLEANING_REPORT.txt",
+          "size_bytes": 2076,
+          "size_formatted": "2.03 KB"
+        },
+        {
+          "name": "processed/train_cleaned.csv",
+          "size_bytes": 2359134,
+          "size_formatted": "2.25 MB",
+          "csv_audit": {
+            "filename": "processed/train_cleaned.csv",
+            "format": "CSV",
+            "file_size": 2359134,
+            "file_size_formatted": "2.25 MB",
+            "row_count": 29050,
+            "col_count": 12,
+            "columns": [
+              {
+                "name": "POSTED_BY",
+                "inferred_type": "Categorical",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 3
+              },
+              {
+                "name": "UNDER_CONSTRUCTION",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2,
+                "numeric_min": 0.0,
+                "numeric_max": 1.0,
+                "numeric_mean": 0.18
+              },
+              {
+                "name": "RERA",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2,
+                "numeric_min": 0.0,
+                "numeric_max": 1.0,
+                "numeric_mean": 0.32
+              },
+              {
+                "name": "BHK_NO.",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 16,
+                "numeric_min": 1.0,
+                "numeric_max": 20.0,
+                "numeric_mean": 2.39
+              },
+              {
+                "name": "BHK_OR_RK",
+                "inferred_type": "Categorical",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2
+              },
+              {
+                "name": "SQUARE_FT",
+                "inferred_type": "Float",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 5000,
+                "numeric_min": 3.0,
+                "numeric_max": 254545454.5,
+                "numeric_mean": 20031.71
+              },
+              {
+                "name": "READY_TO_MOVE",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2,
+                "numeric_min": 0.0,
+                "numeric_max": 1.0,
+                "numeric_mean": 0.82
+              },
+              {
+                "name": "RESALE",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2,
+                "numeric_min": 0.0,
+                "numeric_max": 1.0,
+                "numeric_mean": 0.93
+              },
+              {
+                "name": "ADDRESS",
+                "inferred_type": "String",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 5000
+              },
+              {
+                "name": "LONGITUDE",
+                "inferred_type": "Float",
+                "missing_count": 255,
+                "missing_pct": 0.88,
+                "distinct_count": 4019,
+                "numeric_min": 69.104114,
+                "numeric_max": 95.0,
+                "numeric_mean": 77.27
+              },
+              {
+                "name": "LATITUDE",
+                "inferred_type": "Float",
+                "missing_count": 255,
+                "missing_pct": 0.88,
+                "distinct_count": 4028,
+                "numeric_min": 8.513294,
+                "numeric_max": 34.552275,
+                "numeric_mean": 21.13
+              },
+              {
+                "name": "TARGET(PRICE_IN_LACS)",
+                "inferred_type": "Float",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 1172,
+                "numeric_min": 0.25,
+                "numeric_max": 30000.0,
+                "numeric_mean": 141.71
+              }
+            ],
+            "duplicate_rows": 0,
+            "target_candidates": [
+              "TARGET(PRICE_IN_LACS)"
+            ],
+            "locality_distribution": {}
+          }
+        },
+        {
+          "name": "processed/test_cleaned.csv",
+          "size_bytes": 5219648,
+          "size_formatted": "4.98 MB",
+          "csv_audit": {
+            "filename": "processed/test_cleaned.csv",
+            "format": "CSV",
+            "file_size": 5219648,
+            "file_size_formatted": "4.98 MB",
+            "row_count": 68720,
+            "col_count": 11,
+            "columns": [
+              {
+                "name": "POSTED_BY",
+                "inferred_type": "Categorical",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 3
+              },
+              {
+                "name": "UNDER_CONSTRUCTION",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2,
+                "numeric_min": 0.0,
+                "numeric_max": 1.0,
+                "numeric_mean": 0.18
+              },
+              {
+                "name": "RERA",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2,
+                "numeric_min": 0.0,
+                "numeric_max": 1.0,
+                "numeric_mean": 0.32
+              },
+              {
+                "name": "BHK_NO.",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 17,
+                "numeric_min": 1.0,
+                "numeric_max": 31.0,
+                "numeric_mean": 2.39
+              },
+              {
+                "name": "BHK_OR_RK",
+                "inferred_type": "Categorical",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2
+              },
+              {
+                "name": "SQUARE_FT",
+                "inferred_type": "Float",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 5000,
+                "numeric_min": 1.0,
+                "numeric_max": 40163934.43,
+                "numeric_mean": 2762.42
+              },
+              {
+                "name": "READY_TO_MOVE",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2,
+                "numeric_min": 0.0,
+                "numeric_max": 1.0,
+                "numeric_mean": 0.82
+              },
+              {
+                "name": "RESALE",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2,
+                "numeric_min": 0.0,
+                "numeric_max": 1.0,
+                "numeric_mean": 0.93
+              },
+              {
+                "name": "ADDRESS",
+                "inferred_type": "String",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 5000
+              },
+              {
+                "name": "LONGITUDE",
+                "inferred_type": "Float",
+                "missing_count": 540,
+                "missing_pct": 0.79,
+                "distinct_count": 5000,
+                "numeric_min": 69.114637,
+                "numeric_max": 95.0,
+                "numeric_mean": 77.29
+              },
+              {
+                "name": "LATITUDE",
+                "inferred_type": "Float",
+                "missing_count": 540,
+                "missing_pct": 0.79,
+                "distinct_count": 5000,
+                "numeric_min": 8.187330000000001,
+                "numeric_max": 35.02978332,
+                "numeric_mean": 21.16
+              }
+            ],
+            "duplicate_rows": 2470,
+            "target_candidates": [],
+            "locality_distribution": {}
+          }
+        },
+        {
+          "name": "processed/sample_submission_template_unchanged.csv",
+          "size_bytes": 274902,
+          "size_formatted": "268.46 KB",
+          "csv_audit": {
+            "filename": "processed/sample_submission_template_unchanged.csv",
+            "format": "CSV",
+            "file_size": 274902,
+            "file_size_formatted": "268.46 KB",
+            "row_count": 68720,
+            "col_count": 1,
+            "columns": [
+              {
+                "name": "TARGET(PRICE_IN_LACS)",
+                "inferred_type": "Float",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 1,
+                "numeric_min": 0.0,
+                "numeric_max": 0.0,
+                "numeric_mean": 0.0
+              }
+            ],
+            "duplicate_rows": 68719,
+            "target_candidates": [
+              "TARGET(PRICE_IN_LACS)"
+            ],
+            "locality_distribution": {}
+          }
+        },
+        {
+          "name": "original/test.csv",
+          "size_bytes": 5229243,
+          "size_formatted": "4.99 MB",
+          "csv_audit": {
+            "filename": "original/test.csv",
+            "format": "CSV",
+            "file_size": 5229243,
+            "file_size_formatted": "4.99 MB",
+            "row_count": 68720,
+            "col_count": 11,
+            "columns": [
+              {
+                "name": "POSTED_BY",
+                "inferred_type": "Categorical",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 3
+              },
+              {
+                "name": "UNDER_CONSTRUCTION",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2,
+                "numeric_min": 0.0,
+                "numeric_max": 1.0,
+                "numeric_mean": 0.18
+              },
+              {
+                "name": "RERA",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2,
+                "numeric_min": 0.0,
+                "numeric_max": 1.0,
+                "numeric_mean": 0.32
+              },
+              {
+                "name": "BHK_NO.",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 17,
+                "numeric_min": 1.0,
+                "numeric_max": 31.0,
+                "numeric_mean": 2.39
+              },
+              {
+                "name": "BHK_OR_RK",
+                "inferred_type": "Categorical",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2
+              },
+              {
+                "name": "SQUARE_FT",
+                "inferred_type": "Float",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 5000,
+                "numeric_min": 1.0,
+                "numeric_max": 40163934.43,
+                "numeric_mean": 2762.42
+              },
+              {
+                "name": "READY_TO_MOVE",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2,
+                "numeric_min": 0.0,
+                "numeric_max": 1.0,
+                "numeric_mean": 0.82
+              },
+              {
+                "name": "RESALE",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2,
+                "numeric_min": 0.0,
+                "numeric_max": 1.0,
+                "numeric_mean": 0.93
+              },
+              {
+                "name": "ADDRESS",
+                "inferred_type": "String",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 5000
+              },
+              {
+                "name": "LONGITUDE",
+                "inferred_type": "Float",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 5000,
+                "numeric_min": -38.391261,
+                "numeric_max": 65.18333,
+                "numeric_mean": 21.29
+              },
+              {
+                "name": "LATITUDE",
+                "inferred_type": "Float",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 5000,
+                "numeric_min": -118.3541,
+                "numeric_max": 175.27804,
+                "numeric_mean": 76.92
+              }
+            ],
+            "duplicate_rows": 2470,
+            "target_candidates": [],
+            "locality_distribution": {}
+          }
+        },
+        {
+          "name": "original/sample_submission.csv",
+          "size_bytes": 274902,
+          "size_formatted": "268.46 KB",
+          "csv_audit": {
+            "filename": "original/sample_submission.csv",
+            "format": "CSV",
+            "file_size": 274902,
+            "file_size_formatted": "268.46 KB",
+            "row_count": 68720,
+            "col_count": 1,
+            "columns": [
+              {
+                "name": "TARGET(PRICE_IN_LACS)",
+                "inferred_type": "Float",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 1,
+                "numeric_min": 0.0,
+                "numeric_max": 0.0,
+                "numeric_mean": 0.0
+              }
+            ],
+            "duplicate_rows": 68719,
+            "target_candidates": [
+              "TARGET(PRICE_IN_LACS)"
+            ],
+            "locality_distribution": {}
+          }
+        },
+        {
+          "name": "original/train.csv",
+          "size_bytes": 2396940,
+          "size_formatted": "2.29 MB",
+          "csv_audit": {
+            "filename": "original/train.csv",
+            "format": "CSV",
+            "file_size": 2396940,
+            "file_size_formatted": "2.29 MB",
+            "row_count": 29451,
+            "col_count": 12,
+            "columns": [
+              {
+                "name": "POSTED_BY",
+                "inferred_type": "Categorical",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 3
+              },
+              {
+                "name": "UNDER_CONSTRUCTION",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2,
+                "numeric_min": 0.0,
+                "numeric_max": 1.0,
+                "numeric_mean": 0.18
+              },
+              {
+                "name": "RERA",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2,
+                "numeric_min": 0.0,
+                "numeric_max": 1.0,
+                "numeric_mean": 0.32
+              },
+              {
+                "name": "BHK_NO.",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 16,
+                "numeric_min": 1.0,
+                "numeric_max": 20.0,
+                "numeric_mean": 2.39
+              },
+              {
+                "name": "BHK_OR_RK",
+                "inferred_type": "Categorical",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2
+              },
+              {
+                "name": "SQUARE_FT",
+                "inferred_type": "Float",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 5000,
+                "numeric_min": 3.0,
+                "numeric_max": 254545454.5,
+                "numeric_mean": 19802.17
+              },
+              {
+                "name": "READY_TO_MOVE",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2,
+                "numeric_min": 0.0,
+                "numeric_max": 1.0,
+                "numeric_mean": 0.82
+              },
+              {
+                "name": "RESALE",
+                "inferred_type": "Integer",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 2,
+                "numeric_min": 0.0,
+                "numeric_max": 1.0,
+                "numeric_mean": 0.93
+              },
+              {
+                "name": "ADDRESS",
+                "inferred_type": "String",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 5000
+              },
+              {
+                "name": "LONGITUDE",
+                "inferred_type": "Float",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 4087,
+                "numeric_min": -37.7130075,
+                "numeric_max": 59.912884,
+                "numeric_mean": 21.3
+              },
+              {
+                "name": "LATITUDE",
+                "inferred_type": "Float",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 4078,
+                "numeric_min": -121.7612481,
+                "numeric_max": 152.962676,
+                "numeric_mean": 76.84
+              },
+              {
+                "name": "TARGET(PRICE_IN_LACS)",
+                "inferred_type": "Float",
+                "missing_count": 0,
+                "missing_pct": 0.0,
+                "distinct_count": 1172,
+                "numeric_min": 0.25,
+                "numeric_max": 30000.0,
+                "numeric_mean": 142.9
+              }
+            ],
+            "duplicate_rows": 401,
+            "target_candidates": [
+              "TARGET(PRICE_IN_LACS)"
+            ],
+            "locality_distribution": {}
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -64,5 +64,7 @@ ml/artifacts/sale_price/*
 !ml/artifacts/sale_price/.gitkeep
 ml/artifacts/monthly_rent/*
 !ml/artifacts/monthly_rent/.gitkeep
+ml/training/reports/figures/*
+!ml/training/reports/figures/.gitkeep
 *.joblib
 *.pkl
