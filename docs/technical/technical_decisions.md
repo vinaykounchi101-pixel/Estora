@@ -111,4 +111,22 @@ Records architectural decision records (ADRs), rationales, and technical trade-o
   - Complete protection against cross-tenant data leaks and unauthorized administrative actions.
   - Zero ML training inside HTTP requests; pure pre-loaded artifact inference.
 
+---
+
+## ADR-007: Request Correlation Tracking, Health Probes, and Error Boundaries
+
+- **Date:** 2026-10-22
+- **Status:** Approved
+- **Context:**
+  Production observability, container orchestration, and security require request tracing, standard liveness/readiness probes, and error handling that prevents internal system stack traces from leaking to clients.
+- **Decision:**
+  - Implement `RequestCorrelationMiddleware` attaching and propagating unique `X-Request-ID` headers across all requests and responses, with performance timing (`X-Response-Time-Ms`).
+  - Implement separate liveness (`/api/v1/health/live` for process uptime) and readiness (`/api/v1/health/ready` for DB connectivity and model artifact readiness) probes returning standard HTTP status codes without exposing internal credentials, connection strings, or server filesystem paths.
+  - Implement centralized exception handlers for `RequestValidationError` (422), `HTTPException`, and unhandled server errors (500) logging full stack traces internally while returning opaque, structured error envelopes to clients.
+- **Consequences:**
+  - Complete request traceability across backend logs.
+  - Orchestration readiness without credential exposure.
+  - Hardened error responses preventing information disclosure.
+
+
 
