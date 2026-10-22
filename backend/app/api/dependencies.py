@@ -109,3 +109,23 @@ def get_current_admin_user(
             detail="Administrative privileges required to access this resource.",
         )
     return current_user
+
+
+def get_sale_predictor_dependency():
+    """FastAPI dependency injecting the active SalePricePredictor, raising 503 if unavailable."""
+    from app.integrations.ml_inference import get_sale_predictor
+    try:
+        predictor = get_sale_predictor()
+        if predictor is None:
+            raise HTTPException(
+                status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+                detail="ML inference engine is currently unavailable. Model artifact is not loaded.",
+            )
+        return predictor
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail=f"ML inference engine is currently unavailable: {str(exc)}",
+        )

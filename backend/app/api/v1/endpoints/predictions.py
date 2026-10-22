@@ -6,12 +6,52 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, Query, status
 from sqlalchemy.orm import Session
 
-from app.api.dependencies import get_current_user, get_db, get_optional_current_user
+from app.api.dependencies import (
+    get_current_user,
+    get_db,
+    get_optional_current_user,
+    get_sale_predictor_dependency,
+)
 from app.models.user import User
-from app.schemas.prediction import PredictionCreateRequest, PredictionResponse
+from app.schemas.prediction import (
+    PredictionCreateRequest,
+    PredictionResponse,
+    SalePriceInferenceRequest,
+    SalePriceInferenceResponse,
+)
 from app.services.prediction_service import PredictionService
+from real_estate_ml.inference.predictor import SalePricePredictor
 
 router = APIRouter()
+
+
+@router.post(
+    "/sale-price",
+    response_model=SalePriceInferenceResponse,
+    status_code=status.HTTP_200_OK,
+    summary="Stateless residential sale price prediction for Pune properties",
+)
+def predict_sale_price(
+    request: SalePriceInferenceRequest,
+    predictor: SalePricePredictor = Depends(get_sale_predictor_dependency),
+) -> SalePriceInferenceResponse:
+    """Execute validated ML inference on property features using the approved Pune residential model.
+
+    This endpoint is stateless and does not persist valuation snapshots to the database.
+    """
+    raw_inputs = request.model_dump()
+    result = predictor.predict(raw_inputs)
+    return SalePriceInferenceResponse(
+        estimated_price_lakhs=result["estimated_price_lakhs"],
+        estimated_price_inr=result["estimated_price_inr"],
+        currency=result["currency"],
+        currency_unit=result["currency_unit"],
+        model_name=result["model_name"],
+        model_version=result["model_version"],
+        prediction_type="sale_price",
+        supported_geography=result["supported_geography"],
+        disclaimer=result["disclaimer"],
+    )
 
 
 @router.post(

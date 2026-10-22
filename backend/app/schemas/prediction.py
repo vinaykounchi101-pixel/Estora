@@ -61,3 +61,31 @@ class PredictionListItem(BaseModel):
     created_at: datetime
 
     model_config = ConfigDict(from_attributes=True)
+
+
+class SalePriceInferenceRequest(BaseModel):
+    """Stateless ML inference request containing the exact nine required property features."""
+    square_ft: float = Field(..., ge=150.0, le=8000.0, description="Built-up/carpet area in square feet [150.0, 8000.0]")
+    bhk_no: int = Field(..., ge=1, le=10, description="Bedroom count (BHK) [1, 10]")
+    latitude: float = Field(..., ge=17.90, le=19.30, description="Decimal latitude within Pune metropolitan bounds [17.90, 19.30]")
+    longitude: float = Field(..., ge=73.20, le=75.30, description="Decimal longitude within Pune metropolitan bounds [73.20, 75.30]")
+    posted_by: Literal["Owner", "Dealer", "Builder"] = Field(..., description="Entity listing the property: Owner, Dealer, or Builder")
+    address: str = Field(..., min_length=1, max_length=200, description="Micro-market or locality identifier (e.g. 'Wakad,Pune')")
+    rera: int = Field(..., ge=0, le=1, description="RERA registered flag (0 = non-RERA, 1 = RERA approved)")
+    ready_to_move: int = Field(..., ge=0, le=1, description="Ready to move status (0 = under construction, 1 = ready)")
+    resale: int = Field(..., ge=0, le=1, description="Resale flag (0 = new booking, 1 = resale)")
+
+
+class SalePriceInferenceResponse(BaseModel):
+    """Structured response contract for stateless Pune residential property valuation."""
+    estimated_price_lakhs: float = Field(..., description="Predicted sale price in INR Lakhs")
+    estimated_price_inr: int = Field(..., description="Derived integer price in Indian Rupees (INR)")
+    currency: str = Field("INR", description="Currency code (INR)")
+    currency_unit: str = Field("INR Lakhs", description="Currency unit (INR Lakhs)")
+    model_name: str = Field(..., description="Name of the model artifact used for prediction")
+    model_version: str = Field(..., description="Version of the model artifact used for prediction")
+    prediction_type: str = Field("sale_price", description="Target estimation category")
+    supported_geography: str = Field(..., description="Supported geographic coverage (e.g. 'Pune, Maharashtra')")
+    disclaimer: str = Field(..., description="Decision support disclaimer regarding historical asking prices")
+
+    model_config = ConfigDict(from_attributes=True)

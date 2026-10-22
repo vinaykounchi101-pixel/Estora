@@ -58,12 +58,25 @@ Tracks session progress, completed milestones, and pending tasks.
   - Added 43 new automated integration and unit tests covering all endpoints, authentication flows, error bounds, foundation probes, and ownership controls.
   - Archived verbatim prompt to `prompts/backend/002_fastapi_backend_foundation.md`.
 
-### Current State
-- Phases 1 through 6 completed and verified.
-- **83 automated tests passing** (57 Backend unit/API/foundation tests + 26 ML pipeline tests).
-- Backend API fully operational and validated against live PostgreSQL database.
+- [x] **Phase 7: ML Inference Integration (FastAPI Endpoint) & Audit Correction**:
+  - Added dedicated stateless prediction endpoint: `POST /api/v1/predictions/sale-price`.
+  - Defined typed `SalePriceInferenceRequest` enforcing exact nine model features matching training schema (`square_ft`, `bhk_no`, `latitude`, `longitude`, `posted_by`, `address`, `rera`, `ready_to_move`, `resale`).
+  - Defined `SalePriceInferenceResponse` returning estimated price in INR Lakhs, derived integer INR, currency metadata, model name and version, prediction type, and explicit historical circa-2020 decision support disclaimer.
+  - Implemented application lifespan preloading in `backend/app/main.py` caching the validated `SalePricePredictor` on startup using public `ModelLoader.load()` API.
+  - Enforced eager model deserialization and validation at startup; safely handles missing, corrupt, or incompatible artifacts without application crash while keeping liveness `200 OK` and readiness `503 Service Unavailable`.
+  - Configured `ESTORA_ARTIFACTS_DIR` environment variable resolution with fallback to repository artifact path.
+  - Reconciled readiness probe `/api/v1/health/ready` to evaluate model inference availability, while keeping liveness `/api/v1/health/live` decoupled.
+  - Added route dependency `get_sale_predictor_dependency()` supporting test fixture overrides with deterministic fake predictors.
+  - Added 32 automated integration tests covering valid contracts, schema bounds, out-of-scope geography, unknown micro-markets, model unreadiness, startup resilience, corrupt artifact traps, and real artifact smoke tests.
+  - Established ADR-008 and documented API contract in `docs/technical/sale_price_inference_contract.md`.
+  - Archived verbatim prompts to `prompts/ml/005_fastapi_sale_price_inference_integration.md`, `006_phase7_integration_audit.md`, and `007_startup_model_preload_correction.md`.
 
-### Next Priorities (Phase 7)
+### Current State
+- Phases 1 through 7 completed and verified.
+- **115 automated tests passing** (89 Backend unit/API/inference tests + 26 ML pipeline tests).
+- Stateless ML inference API fully operational and validated against live model artifacts.
+
+### Next Priorities (Phase 8: Frontend UI & Client Integration)
 1. Build Next.js Editorial Luxury user interface in `frontend/`.
 2. Connect typed API client in `frontend/src/lib/api/` to `/api/v1` backend endpoints.
 3. Implement public landing page, interactive valuation form, prediction result displays, and user history views.
