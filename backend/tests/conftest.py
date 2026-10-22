@@ -1,13 +1,17 @@
-"""Pytest fixtures for backend tests."""
+"""Pytest fixtures for backend unit and API integration tests."""
 
-from typing import Generator
+from typing import Dict, Generator
 import pytest
 import sqlalchemy as sa
+from fastapi.testclient import TestClient
 from sqlalchemy.orm import Session, sessionmaker
 from sqlalchemy.pool import StaticPool
 
+from app.api.dependencies import get_db
+from app.core.security import get_password_hash
 from app.db.base import Base
-from app.models import User, Prediction, ModelArtifact  # Ensure all models are registered
+from app.main import app
+from app.models.user import User
 
 
 @pytest.fixture(scope="session")
@@ -41,3 +45,72 @@ def db_session(test_engine) -> Generator[Session, None, None]:
     finally:
         session.close()
         Base.metadata.drop_all(bind=test_engine)
+
+
+@pytest.fixture(scope="function")
+def client(db_session: Session) -> Generator[TestClient, None, None]:
+    """FastAPI TestClient with overridden get_db dependency pointing to isolated SQLite memory."""
+    def override_get_db():
+        try:
+            yield db_session
+        finally:
+            pass
+
+    app.dependency_overrides[get_db] = override_get_db
+    with TestClient(app) as test_client:
+        yield test_client
+    app.dependency_overrides.clear()
+
+
+@pytest.fixture(scope="function")
+def test_user(db_session: Session) -> User:
+    """Create and return a standard authenticated user for testing."""
+    user = User(
+        email="testuser@estora.internal",
+        hashed_password=get_password_hash("Password123!"),
+        full_name="Test Standard User",
+        role="authenticated_user",
+        is_active=True,
+    )
+    db_session.add(user)
+    db_session.commit()
+    db_session.refresh(user)
+    return user
+
+
+@pytest.fixture(scope="function")
+def test_admin(db_session: Session) -> User:
+    """Create and return an administrator user for testing."""
+    admin = User(
+        email="admin@estora.internal",
+        hashed_password=get_password_hash("AdminPass123!"),
+        full_name="Test Admin User",
+        role="admin",
+        is_active=True,
+    )
+    db_session.add(admin)
+    db_session.commit()
+    db_session.refresh(admin)
+    return admin
+
+
+@pytest.fixture(scope="function")
+def auth_headers(client: TestClient, test_user: User) -> Dict[str, str]:
+    """Generate authorization headers for standard authenticated test user."""
+    res = client.post(
+        "/api/v1/auth/login",
+        json={"email": test_user.email, "password": "Password123!"},
+    )
+    token = res.json()["access_token"]
+    return {"Authorization": f"Bearer {token}"}
+
+
+@pytest.fixture(scope="function")
+def admin_headers(client: TestClient, test_admin: User) -> Dict[str, str]:
+    """Generate authorization headers for administrative test user."""
+    res = client.post(
+        "/api/v1/auth/login",
+        json={"email": test_admin.email, "password": "AdminPass123!"},
+    )
+    token = res.json()["access_token"]
+    return {"Authorization": f"Bearer {token}"}

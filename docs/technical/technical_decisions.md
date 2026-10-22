@@ -92,3 +92,23 @@ Records architectural decision records (ADRs), rationales, and technical trade-o
   - Zero binary bloat in the relational database.
   - Seamless testing against in-memory SQLite and migration execution against production PostgreSQL.
 
+---
+
+## ADR-006: Backend API Architecture, Security, and ML Inference Integration
+
+- **Date:** 2026-10-22
+- **Status:** Approved
+- **Context:**
+  Serving residential valuations and managing user portfolios requires a layered, thin-controller backend architecture with secure authentication, strict input validation, and role-based access control.
+- **Decision:**
+  - Build on FastAPI with thin controllers in `app/api/v1/endpoints/`, domain business logic in `app/services/`, and data access in `app/repositories/`.
+  - Use salted `bcrypt` for password hashing and signed `HS256` JWT access tokens with embedded user ID and role claims for authentication.
+  - Implement three distinct role tiers: Visitor (anonymous predictions allowed, no private data access), Authenticated User (personal prediction history, profile management), and Administrator (system-wide analytics, user audits, model registry inspection).
+  - Enforce user data isolation at the service/repository layer: authenticated users can only view their own prediction history and details (`403 Forbidden` enforced on cross-user access).
+  - Integrate ML inference via a dedicated adapter `backend/app/integrations/ml_inference.py` wrapping the offline `SalePricePredictor` pipeline, keeping route handlers decoupled from ML internals.
+- **Consequences:**
+  - Strict separation of concerns across controller, service, repository, and ML layers.
+  - Complete protection against cross-tenant data leaks and unauthorized administrative actions.
+  - Zero ML training inside HTTP requests; pure pre-loaded artifact inference.
+
+
