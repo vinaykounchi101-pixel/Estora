@@ -11,8 +11,9 @@ from real_estate_ml.artifacts.metadata import (
     save_metadata,
 )
 
-# Configurable artifacts directory path via environment variable or project root default
-DEFAULT_ARTIFACTS_ROOT = Path("ml/artifacts")
+# Configurable artifacts directory path via environment variable or package root default
+PACKAGE_ARTIFACTS_ROOT = Path(__file__).resolve().parent.parent.parent.parent / "artifacts"
+DEFAULT_ARTIFACTS_ROOT = PACKAGE_ARTIFACTS_ROOT if PACKAGE_ARTIFACTS_ROOT.exists() else Path("ml/artifacts")
 
 
 def get_artifacts_directory(subpath: str = "sale_price") -> Path:

@@ -7,6 +7,7 @@ from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from app.core.logging import get_logger
+from real_estate_ml.inference.input_validation import InferenceValidationError
 
 logger = get_logger("estora.exceptions")
 
@@ -79,9 +80,25 @@ async def unhandled_exception_handler(request: Request, exc: Exception) -> JSONR
         },
     )
 
+async def inference_validation_exception_handler(request: Request, exc: InferenceValidationError) -> JSONResponse:
+    """Format domain ML inference validation failures into clean, structured 422 responses."""
+    request_id = _get_request_id(request)
+    return JSONResponse(
+        status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+        content={
+            "error": {
+                "code": 422,
+                "message": str(exc),
+                "request_id": request_id,
+            },
+            "detail": str(exc),
+        },
+    )
+
 
 def register_exception_handlers(app: FastAPI) -> None:
     """Register all standard error handlers onto the FastAPI application instance."""
     app.add_exception_handler(StarletteHTTPException, http_exception_handler)
     app.add_exception_handler(RequestValidationError, validation_exception_handler)
+    app.add_exception_handler(InferenceValidationError, inference_validation_exception_handler)
     app.add_exception_handler(Exception, unhandled_exception_handler)

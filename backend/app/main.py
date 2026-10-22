@@ -4,17 +4,32 @@ Configures application lifespan, versioned routing, CORS policies,
 structured correlation tracking, and production error boundaries.
 """
 
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.v1.router import api_router
 from app.core.config import settings
 from app.core.exceptions import register_exception_handlers
-from app.core.logging import setup_logging
+from app.core.logging import get_logger, setup_logging
 from app.core.middleware import RequestCorrelationMiddleware
+from app.integrations.ml_inference import load_sale_predictor
 
 # Initialize structured logging
 setup_logging(log_level="INFO" if settings.ENVIRONMENT == "production" else "DEBUG")
+logger = get_logger("estora.lifespan")
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Application lifespan: eagerly loads and validates ML model artifact at startup while preserving resilience."""
+    try:
+        load_sale_predictor()
+        logger.info("Pune residential sale-price model artifact loaded successfully during application startup.")
+    except Exception as exc:
+        logger.error(f"Could not preload ML model artifact during application startup: {exc}")
+    yield
+
 
 app = FastAPI(
     title=f"{settings.PROJECT_NAME} API",
@@ -23,6 +38,7 @@ app = FastAPI(
     openapi_url=f"{settings.API_V1_STR}/openapi.json",
     docs_url="/docs",
     redoc_url="/redoc",
+    lifespan=lifespan,
 )
 
 # 1. Custom Request Correlation & Timing Middleware

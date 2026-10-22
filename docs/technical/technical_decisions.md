@@ -128,5 +128,24 @@ Records architectural decision records (ADRs), rationales, and technical trade-o
   - Orchestration readiness without credential exposure.
   - Hardened error responses preventing information disclosure.
 
+---
+
+## ADR-008: Stateless ML Inference Endpoint and Lifespan Preloading
+
+- **Date:** 2026-10-23
+- **Status:** Approved
+- **Context:**
+  Serving residential valuations with sub-50ms latency requires preloading the serialized machine learning pipeline into memory at application startup rather than reading disk artifacts per request. Furthermore, decision-support property estimators require a stateless, public valuation route (`POST /api/v1/predictions/sale-price`) that enforces the exact 9-feature schema without requiring database session allocation or user authentication.
+- **Decision:**
+  - Preload the approved `pune_sale_v1.joblib` artifact and metadata during FastAPI `lifespan` context manager startup, caching it in memory.
+  - Expose `get_sale_predictor_dependency()` for FastAPI dependency injection, enabling deterministic mock/fake predictor overrides during unit and API integration testing.
+  - Implement `POST /api/v1/predictions/sale-price` adhering to `SalePriceInferenceRequest` (validating `square_ft`, `bhk_no`, `latitude`, `longitude`, `posted_by`, `address`, `rera`, `ready_to_move`, `resale`) and `SalePriceInferenceResponse`.
+  - Reconcile `GET /api/v1/health/ready` to verify model inference availability via `is_sale_predictor_available()`, keeping process liveness (`/api/v1/health/live`) decoupled.
+  - Honor `ESTORA_ARTIFACTS_DIR` environment variable for artifact directory location with fallback to package/repo relative paths.
+- **Consequences:**
+  - Zero disk I/O during prediction requests; high throughput and low latency.
+  - Test suite can run deterministically without depending on physical artifacts or network resources.
+  - Clean separation between stateless prediction inference and historical database snapshot persistence.
+
 
 

@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 
 from app.api.dependencies import get_db
 from app.core.config import settings
-from app.integrations.ml_inference import REPO_ROOT
+from app.integrations.ml_inference import REPO_ROOT, is_sale_predictor_available
 
 router = APIRouter()
 
@@ -48,12 +48,15 @@ def readiness_probe(response: Response, db: Session = Depends(get_db)):
         dependencies["database"] = "disconnected"
         is_ready = False
 
-    # 2. Check ML model artifact presence
-    artifact_path = REPO_ROOT / "ml" / "artifacts" / "sale_price" / "pune_sale_v1.joblib"
-    if artifact_path.exists():
-        dependencies["model_artifacts"] = "available"
-    else:
-        dependencies["model_artifacts"] = "missing"
+    # 2. Check ML model artifact presence and inference readiness
+    try:
+        if is_sale_predictor_available():
+            dependencies["model_artifacts"] = "available"
+        else:
+            dependencies["model_artifacts"] = "unavailable"
+            is_ready = False
+    except Exception:
+        dependencies["model_artifacts"] = "unavailable"
         is_ready = False
 
     if not is_ready:
