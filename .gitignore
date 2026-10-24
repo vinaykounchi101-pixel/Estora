@@ -25,7 +25,10 @@ wheels/
 htmlcov/
 .venv/
 venv/
-ENV/
+# Database
+*.db
+*.sqlite
+*.sqlite3
 
 # Node / Next.js
 node_modules/
