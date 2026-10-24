@@ -22,12 +22,25 @@ logger = get_logger("estora.lifespan")
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """Application lifespan: eagerly loads and validates ML model artifact at startup while preserving resilience."""
+    """Application lifespan: loads ML models and initializes database schemas and admin credentials."""
     try:
         load_sale_predictor()
         logger.info("Pune residential sale-price model artifact loaded successfully during application startup.")
     except Exception as exc:
         logger.error(f"Could not preload ML model artifact during application startup: {exc}")
+
+    if settings.ENVIRONMENT != "testing":
+        try:
+            from app.db.base import Base
+            from app.db.session import engine, SessionLocal
+            from app.db.init_db import init_db
+            Base.metadata.create_all(bind=engine)
+            with SessionLocal() as db:
+                init_db(db)
+            logger.info("Database schemas and environment-driven administrative seeds initialized successfully.")
+        except Exception as exc:
+            logger.warning(f"Database initialization deferred during startup: {exc}")
+
     yield
 
 

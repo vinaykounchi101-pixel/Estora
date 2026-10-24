@@ -172,7 +172,7 @@ export default function LoginPage() {
 
               <div className="mt-6 p-3 rounded-md bg-surface-raised/40 border border-border/60 text-[11px] text-text-muted/80 flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-sage shrink-0" />
-                <span>Default admin: admin@estora.internal (seed password per SRS)</span>
+                <span>Protected by role-based access control and enterprise encryption.</span>
               </div>
             </CardContent>
           </Card>

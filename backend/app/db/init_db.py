@@ -50,16 +50,30 @@ def seed_model_artifacts(db: Session) -> None:
     db.commit()
 
 
-def seed_initial_admin(db: Session, admin_email: str = "admin@estora.internal", initial_password: str = "AdminEstora2026!") -> None:
-    """Idempotently seed an initial system administrator user."""
-    existing = db.query(User).filter(User.email == admin_email).first()
+from sqlalchemy import func
+from app.core.config import settings
+
+
+def seed_initial_admin(db: Session, admin_email: str | None = None, initial_password: str | None = None) -> None:
+    """Idempotently seed or synchronize the system administrator user driven by environment variables."""
+    email = (admin_email or settings.ADMIN_EMAIL).strip().lower()
+    password = initial_password or settings.ADMIN_PASSWORD
+    name = settings.ADMIN_NAME
+
+    existing = db.query(User).filter(func.lower(User.email) == email).first()
     if existing:
+        existing.role = "admin"
+        existing.is_active = True
+        existing.hashed_password = get_password_hash(password)
+        if name:
+            existing.full_name = name
+        db.commit()
         return
 
     admin_user = User(
-        email=admin_email,
-        hashed_password=get_password_hash(initial_password),
-        full_name="Estora System Administrator",
+        email=email,
+        hashed_password=get_password_hash(password),
+        full_name=name,
         role="admin",
         is_active=True,
     )

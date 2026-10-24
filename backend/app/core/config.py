@@ -27,6 +27,11 @@ class Settings(BaseSettings):
     BACKEND_CORS_ORIGINS: List[str] = ["http://localhost:3000"]
     ML_ARTIFACTS_DIR: str = "../../ml/artifacts"
 
+    # Administrative Account Seed (Environment-variable driven per AGENTS.md)
+    ADMIN_EMAIL: str = "admin@estora.internal"
+    ADMIN_PASSWORD: str = "AdminEstora2026!"
+    ADMIN_NAME: str = "Estora Administrator"
+
     @property
     def sync_database_url(self) -> str:
         """Construct synchronous SQLAlchemy database connection URI."""

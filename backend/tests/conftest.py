@@ -8,10 +8,14 @@ from sqlalchemy.orm import Session, sessionmaker
 from sqlalchemy.pool import StaticPool
 
 from app.api.dependencies import get_db
+from app.core.config import settings
 from app.core.security import get_password_hash
 from app.db.base import Base
 from app.main import app
 from app.models.user import User
+
+# Ensure testing environment avoids production database connection attempts
+settings.ENVIRONMENT = "testing"
 
 
 @pytest.fixture(scope="session")
