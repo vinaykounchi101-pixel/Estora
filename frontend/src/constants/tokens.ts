@@ -1,0 +1,122 @@
+/**
+ * Estora Design Tokens
+ * Source of truth derived from design/estora_design_package/design/design-tokens.json
+ */
+
+export const DESIGN_TOKENS = {
+  brand: 'Estora',
+  description: 'Real Estate Intelligence Platform',
+  themes: {
+    light: {
+      color: {
+        background: '#F2F2F2',
+        surface: '#FEFDFC',
+        text: '#0F0F09',
+        textMuted: '#585E5F',
+        sage: '#C4CEB8',
+        stone: '#585E5F',
+        earth: '#453F22',
+        slate: '#9EA9B2',
+        taupe: '#8D7658',
+        border: '#E3E0D8',
+        focus: '#68765B',
+        danger: '#B5473C',
+        success: '#47765A',
+      },
+    },
+    dark: {
+      color: {
+        background: '#141511',
+        surface: '#1F201A',
+        surfaceRaised: '#272820',
+        text: '#F2F0E9',
+        textMuted: '#B8B9AE',
+        sage: '#C4CEB8',
+        earth: '#453F22',
+        bronze: '#B17D58',
+        border: '#3A3B32',
+        focus: '#C4CEB8',
+        danger: '#F18B80',
+        success: '#8FC49B',
+      },
+    },
+  },
+  typography: {
+    display: {
+      fontFamily: 'Playfair Display',
+      usage: 'Hero and editorial headlines',
+    },
+    body: {
+      fontFamily: 'Inter',
+      usage: 'Navigation, forms, tables, charts and body text',
+    },
+    scalePx: {
+      xs: 12,
+      sm: 14,
+      md: 16,
+      lg: 18,
+      xl: 20,
+      '2xl': 24,
+      '3xl': 30,
+      '4xl': 36,
+      '5xl': 48,
+      hero: 64,
+    },
+  },
+  spacingPx: {
+    1: 4,
+    2: 8,
+    3: 12,
+    4: 16,
+    5: 20,
+    6: 24,
+    8: 32,
+    10: 40,
+    12: 48,
+    16: 64,
+    20: 80,
+    24: 96,
+  },
+  radiusPx: {
+    sm: 6,
+    md: 10,
+    lg: 16,
+    xl: 24,
+    pill: 9999,
+  },
+  shadow: {
+    sm: '0 1px 2px rgba(15,15,9,0.05)',
+    md: '0 4px 16px rgba(15,15,9,0.07)',
+    lg: '0 12px 32px rgba(15,15,9,0.10)',
+  },
+  layout: {
+    contentMaxWidthPx: 1440,
+    readingMaxWidthPx: 760,
+    pageGutterPx: {
+      mobile: 20,
+      tablet: 32,
+      desktop: 56,
+    },
+    sidebarWidthPx: 248,
+    headerHeightPx: 76,
+  },
+  motion: {
+    durationMs: {
+      fast: 140,
+      normal: 240,
+      slow: 400,
+      entrance: 700,
+      heroImage: 900,
+    },
+    easing: {
+      editorial: 'cubic-bezier(0.2, 0.7, 0.2, 1)',
+      smoothOut: 'cubic-bezier(0.16, 1, 0.3, 1)',
+    },
+    distancePx: {
+      subtle: 8,
+      standard: 16,
+      prominent: 24,
+    },
+    staggerMs: 80,
+  },
+} as const;
