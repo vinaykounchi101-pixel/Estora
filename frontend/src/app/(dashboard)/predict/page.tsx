@@ -481,9 +481,9 @@ export default function PredictPage() {
           ) : (
             <Card className="border border-border/80 bg-surface/50 p-6 sm:p-8 space-y-6">
               <div className="space-y-2 border-b border-border/80 pb-4">
-                <h3 className="font-serif text-xl font-medium text-text">Valuation Standards</h3>
+                <h3 className="font-serif text-xl font-medium text-text">Valuation Standards & Integrity</h3>
                 <p className="text-xs text-text-muted leading-relaxed">
-                  How Estora evaluates residential assets in the Pune metropolitan primary market.
+                  Rigorous empirical validation parameters governing Pune residential price estimates.
                 </p>
               </div>
 
@@ -491,24 +491,40 @@ export default function PredictPage() {
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="w-4 h-4 text-[#47765A] dark:text-[#C4CEB8] shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-text block mb-0.5">HistGradientBoosting Pipeline:</strong>
-                    Trained across 1,833 audited records, capturing nonlinear spatial relationships without data leakage.
+                    <strong className="text-text block mb-0.5">HistGradientBoosting Champion Pipeline:</strong>
+                    Trained on 1,833 audited Pune residential records, learning complex non-linear attribute interactions without target leakage.
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="w-4 h-4 text-[#47765A] dark:text-[#C4CEB8] shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-text block mb-0.5">Holdout Cross-Validation:</strong>
-                    Evaluated with held-out MAE of ₹17.35 Lakhs and R² of 0.807 against a naive median baseline.
+                    <strong className="text-text block mb-0.5">Spatial GroupKFold Cross-Validation:</strong>
+                    5-fold cross-validation partitioned by micro-market centroid yields a mean validation MAE of <span className="font-semibold text-text">₹16.07 Lakhs</span> (±₹0.98L).
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="w-4 h-4 text-[#47765A] dark:text-[#C4CEB8] shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-text block mb-0.5">Spatial Bounding:</strong>
-                    Ensures inputs match verified residential coordinates, rejecting out-of-scope micro-markets.
+                    <strong className="text-text block mb-0.5">Frozen 20% Held-Out Test Evaluation:</strong>
+                    Held-out test partition verified with <span className="font-semibold text-text">MAE ₹17.35 Lakhs</span>, RMSE ₹40.71 Lakhs, and <span className="font-semibold text-text">R² 0.807</span> variance explained.
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-4 h-4 text-[#47765A] dark:text-[#C4CEB8] shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="text-text block mb-0.5">Micro-Market Spatial Bounding:</strong>
+                    Enforces strict geographic coordinates (17.9°–19.3° N, 73.2°–75.3° E), rejecting out-of-scope localities.
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-4 h-4 text-[#47765A] dark:text-[#C4CEB8] shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="text-text block mb-0.5">Inference Latency & Price Semantics:</strong>
+                    Sub-10ms model execution (~6.6ms mean). Reflects historical circa-2020 listing asking prices for decision-support rather than legal registered deeds.
                   </div>
                 </div>
               </div>

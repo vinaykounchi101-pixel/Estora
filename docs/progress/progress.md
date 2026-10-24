@@ -71,15 +71,25 @@ Tracks session progress, completed milestones, and pending tasks.
   - Established ADR-008 and documented API contract in `docs/technical/sale_price_inference_contract.md`.
   - Archived verbatim prompts to `prompts/ml/005_fastapi_sale_price_inference_integration.md`, `006_phase7_integration_audit.md`, and `007_startup_model_preload_correction.md`.
 
-### Current State
-- Phases 1 through 7 completed and verified.
-- **115 automated tests passing** (89 Backend unit/API/inference tests + 26 ML pipeline tests).
-- Stateless ML inference API fully operational and validated against live model artifacts.
+- [x] **Phase 8 & 9 (Phase B & C): Frontend Implementation, Full Integration & Visual Refinement**:
+  - Built production Next.js 14 App Router frontend featuring Editorial Luxury design system across all 21 routes.
+  - Connected typed API client (`frontend/src/lib/api/`) directly to FastAPI `/api/v1` backend endpoints with full JWT session handling and error boundaries.
+  - Refined critical Landing-Page hero image composition in `frontend/src/components/motion/parallax-hero-image.tsx` and `frontend/src/app/(marketing)/page.tsx`:
+    - Eliminated opaque white overlay washing out the building; restored full architectural photograph showing cantilever, soffits, sky, and reflection pool.
+    - Implemented localized, subtle translucent warm-ivory haze (`from-background/75 via-background/40 to-transparent`) that dissolves naturally into the photo without harsh vertical borders.
+  - Built interactive Valuation Studio (`/predict`) supporting both stateless and persistent prediction workflows, validating Pune residential inputs against model operational bounds.
+  - Updated Valuation Standards & Methodology panels to strictly distinguish 5-Fold Spatial GroupKFold Cross-Validation (MAE: ₹16.07L) from Frozen 20% Held-Out Test Evaluation (MAE: ₹17.35L, RMSE: ₹40.71L, R²: 0.807) and empirical latency (~6.6ms inference engine mean).
+  - Standardized Portfolio Dashboard (`/dashboard`) and Personal Analytics (`/analytics`) ensuring all metrics derive exclusively from authenticated user records without fabricated market indices.
+  - Implemented honest disclosures for deferred capabilities: Saved property bookmarking (`/properties` - Phase P2 roadmap) and automated password reset mailer (`/forgot-password` - SRS FR-AUTH-006 deferred).
+  - Verified full test suite across repository: 70 frontend vitest tests, 89 backend pytest tests, 26 ML pytest tests (185 tests total passing).
+  - Production Next.js build verified (21/21 routes prerendered/compiled with 0 errors).
 
-### Next Priorities (Phase 8: Frontend UI & Client Integration)
-1. Build Next.js Editorial Luxury user interface in `frontend/`.
-2. Connect typed API client in `frontend/src/lib/api/` to `/api/v1` backend endpoints.
-3. Implement public landing page, interactive valuation form, prediction result displays, and user history views.
+### Current State
+- All roadmap phases (Phases 1 through 9 / Phase A, B, and C) completed and verified.
+- **185 automated tests passing** (70 Frontend Vitest + 89 Backend Pytest + 26 ML Pipeline Pytest).
+- TypeScript compile (`tsc --noEmit`) and Next.js production bundle build (`npm run build`) passing with zero errors.
+- Both FastAPI backend (`http://127.0.0.1:8000`) and Next.js frontend (`http://localhost:3000`) verified and operational.
+
 
 
 

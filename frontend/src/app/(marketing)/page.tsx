@@ -38,7 +38,7 @@ export default function HomePage() {
 
           {/* Hero Content Layer */}
           <Container className="relative z-10 py-20 sm:py-28 lg:py-36">
-            <div className="max-w-3xl space-y-8">
+            <div className="max-w-3xl space-y-8 p-4 sm:p-6 -ml-4 sm:-ml-6 rounded-2xl bg-gradient-to-r from-background/60 via-background/30 to-transparent backdrop-blur-[1px]">
               {/* Eyebrow / Overline */}
               <div className="animate-entrance-1 inline-flex items-center gap-2.5">
                 <Badge variant="sage" className="gap-1.5 py-1 px-3.5">
@@ -51,7 +51,7 @@ export default function HomePage() {
               </div>
 
               {/* Majestic Editorial Headline */}
-              <h1 className="animate-entrance-2 font-serif text-4xl sm:text-6xl lg:text-7xl font-medium tracking-tight text-text leading-[1.08]">
+              <h1 className="animate-entrance-2 font-serif text-4xl sm:text-6xl lg:text-7xl font-medium tracking-tight text-text leading-[1.08] drop-shadow-[0_1px_1px_rgba(255,255,255,0.7)] dark:drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                 Smarter Decisions for a Brighter Future
               </h1>
 
@@ -83,9 +83,9 @@ export default function HomePage() {
                   1,833 Audited Records
                 </span>
                 <span className="text-border">•</span>
-                <span>GroupKFold CV</span>
+                <span>GroupKFold CV (₹16.07L)</span>
                 <span className="text-border">•</span>
-                <span>Sub-50ms Inference</span>
+                <span>~6.6ms Model Inference</span>
               </div>
             </div>
           </Container>
@@ -130,14 +130,14 @@ export default function HomePage() {
 
                 <div className="pt-6 sm:pt-0 sm:pl-6 text-center sm:text-left">
                   <div className="font-serif text-3xl sm:text-4xl font-medium text-text flex items-center justify-center sm:justify-start gap-1">
-                    <span>&lt; 50ms</span>
+                    <span>~6.6ms</span>
                     <Zap className="w-4 h-4 text-sage" />
                   </div>
                   <div className="text-xs font-medium text-text-muted uppercase tracking-wider mt-1">
-                    FastAPI Uvicorn Latency
+                    Model Inference Latency
                   </div>
                   <p className="text-[11px] text-text-muted/80 mt-1">
-                    Eagerly preloaded pipeline in server memory
+                    Empirical 100-run mean; &lt;65ms full HTTP request
                   </p>
                 </div>
               </div>

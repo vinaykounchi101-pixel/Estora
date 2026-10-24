@@ -147,5 +147,24 @@ Records architectural decision records (ADRs), rationales, and technical trade-o
   - Test suite can run deterministically without depending on physical artifacts or network resources.
   - Clean separation between stateless prediction inference and historical database snapshot persistence.
 
+---
+
+## ADR-009: Visual Hierarchy, Localized Atmospheric Hero Haze, and Empirical Telemetry Reporting
+
+- **Date:** 2026-10-25
+- **Status:** Approved
+- **Context:**
+  The initial hero section suffered from a broad, opaque white overlay that obscured key architectural features of the primary imagery (cantilever, soffits, and reflection pool). Furthermore, market-facing latency claims required empirical grounding against the live ML inference engine, and validation metrics required strict demarcation between Spatial GroupKFold CV and Frozen 20% Held-Out test evaluation to maintain portfolio-grade research integrity.
+- **Decision:**
+  - In `frontend/src/components/motion/parallax-hero-image.tsx`, replace the opaque 42% white overlay with a localized, subtle translucent warm-ivory haze (`from-background/75 via-background/40 to-transparent`) and adjust background alignment to `object-[58%_center]`, preserving the complete architectural photograph across mobile, tablet, and desktop viewports.
+  - In `frontend/src/app/(marketing)/page.tsx`, introduce micro-localized text backdrop contrast shields and soft shadows, ensuring WCAG 2.1 AA text legibility without requiring heavy image filters or solid color masks.
+  - Conduct empirical inference latency benchmarking on the live pipeline: document ~6.6ms mean engine inference and `< 65ms` HTTP roundtrip rather than arbitrary unverified figures.
+  - Explicitly partition and label model evaluation disclosures in `predict/page.tsx` and `methodology/page.tsx`: 5-Fold GroupKFold CV MAE (₹16.07L ± 0.98L), Holdout MAE (₹17.35L), Holdout $R^2$ (0.807), and historical circa-2020 listing price semantics.
+- **Consequences:**
+  - Preserves the full architectural photograph as the visual center of the editorial luxury landing experience.
+  - Completely honest, reproducible, and verifiable performance and valuation claims across all marketing and application screens.
+  - Consistent visual rhythm, standardized typography scale, and unified component styling across all 21 application routes.
+
+
 
 

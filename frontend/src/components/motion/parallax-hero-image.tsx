@@ -58,31 +58,26 @@ export function ParallaxHeroImage() {
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[75%_35%] md:object-[80%_38%] lg:object-[85%_42%] opacity-100"
+            className="object-cover object-[center_35%] md:object-[58%_center] lg:object-[60%_center] opacity-100"
             quality={95}
           />
         </div>
       </div>
 
       {/* 
-        Theme-Aware Directional Horizontal Scrim:
-        - Left 0-30%: Pure background protecting the editorial headline and copy for 100% WCAG AAA contrast.
-        - Center 30-65%: Smooth editorial transition gradient into transparency.
-        - Right 65-100%: 100% transparent with ZERO overlay on the villa, wood soffits, concrete cantilever, and pool.
+        Subtle, Localized Atmospheric Haze:
+        - Replaces the broad opaque wash with a gentle translucent mist.
+        - Left 0-25%: Translucent warm haze (never 100% opaque) preserving architectural visibility underneath.
+        - Center 25-55%: Naturally dissolves into the crisp photograph with no visible vertical seam.
+        - Right 55-100%: 100% transparent - the architectural pavilion, pool, and twilight sky remain at full natural color, contrast, and sharpness.
       */}
-      <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-background via-background via-30% md:via-background/90 md:via-42% lg:via-background/75 lg:via-38% to-transparent to-75% lg:to-65% pointer-events-none" />
+      <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-background/75 via-background/40 via-35% to-transparent to-60% pointer-events-none" />
 
       {/* 
-        Mobile Directional Scrim:
-        Provides clear contrast for stacked typography while letting the villa and pool shine through below.
+        Mobile Atmospheric Mist:
+        Translucent top-down gradient providing clear contrast for headline while preserving full villa and pool visibility below.
       */}
-      <div className="md:hidden absolute inset-0 bg-gradient-to-b from-background via-background/85 via-50% to-background/30 pointer-events-none" />
-
-      {/* Top edge fade: subtly blends the twilight sky into the header without clipping */}
-      <div className="absolute top-0 inset-x-0 h-16 bg-gradient-to-b from-background/80 to-transparent pointer-events-none" />
-
-      {/* Bottom edge fade: melts the lower reflection pool cleanly into the methodology divider without fogging the building */}
-      <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-background via-background/60 to-transparent pointer-events-none" />
+      <div className="md:hidden absolute inset-0 bg-gradient-to-b from-background/80 via-background/45 via-45% to-transparent pointer-events-none" />
     </div>
   );
 }
