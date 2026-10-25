@@ -26,7 +26,7 @@ export function ParallaxHeroImage() {
         window.requestAnimationFrame(() => {
           const scrollY = window.scrollY;
           // Subtly bound parallax to max 24px so it never drifts from crop
-          const damped = Math.min(Math.max(scrollY * 0.08, -10), 28);
+          const damped = Math.min(Math.max(scrollY * 0.08, -10), 24);
           setOffsetY(damped);
           ticking = false;
         });
@@ -42,7 +42,9 @@ export function ParallaxHeroImage() {
     <div ref={containerRef} className="absolute inset-0 pointer-events-none z-0 overflow-hidden select-none">
       {/* 
         Parallax Motion Wrapper:
-        Isolated transform wrapper so scroll parallax does not collide with the entrance scale-settle animation.
+        Both the base image, the oversized ESTORA wordmark, and the foreground building cutout
+        are encapsulated within this unified transform wrapper.
+        When scrolling occurs, all layers track synchronously in physical space.
       */}
       <div
         className="relative w-full h-[112%] -top-[4%] transition-transform duration-100 ease-out"
@@ -50,8 +52,8 @@ export function ParallaxHeroImage() {
           transform: enabled ? `translate3d(0, ${offsetY}px, 0)` : 'translate3d(0, 0, 0)',
         }}
       >
-        {/* Entrance Settle Animation Container */}
-        <div className="relative w-full h-full animate-hero-settle">
+        {/* Layer 1: Base Architectural Photograph */}
+        <div className="absolute inset-0 w-full h-full animate-hero-settle">
           <Image
             src="/images/hero-architecture.jpg"
             alt="Modern luxury architectural villa with reflection pool at twilight illustrating Estora real estate valuation intelligence"
@@ -62,22 +64,52 @@ export function ParallaxHeroImage() {
             quality={95}
           />
         </div>
+
+        {/* 
+          Layer 2: Oversized ESTORA Architectural Wordmark
+          - Spans across the upper twilight sky behind the cantilever and villa roofline.
+          - Restrained warm ivory / stone tone with soft illumination.
+          - Architectural typography anchored directly into the scene.
+        */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 top-[2.5%] sm:top-[3.5%] md:top-[4.5%] lg:top-[5%] flex justify-center items-start pointer-events-none select-none z-[1] overflow-hidden"
+        >
+          <span
+            className="font-serif font-medium uppercase tracking-[0.14em] sm:tracking-[0.18em] md:tracking-[0.22em] lg:tracking-[0.25em] text-[15vw] sm:text-[14vw] md:text-[13vw] lg:text-[12.5vw] xl:text-[12vw] leading-none text-[#F6F3EB]/70 dark:text-[#DCD5C5]/35 drop-shadow-[0_1px_8px_rgba(20,21,17,0.15)] transition-opacity duration-700"
+          >
+            ESTORA
+          </span>
+        </div>
+
+        {/* 
+          Layer 3: Foreground Architecture & Refined Silhouette Cutout
+          - Exact 1:1 geometry of the building structure, cantilever, terrace, and pool reflection.
+          - Renders on top of the wordmark so the concrete slabs, glass facades, and palm trees
+            naturally and cleanly obscure the letters without artificial outlines.
+        */}
+        <div className="absolute inset-0 w-full h-full animate-hero-settle z-[2]">
+          <Image
+            src="/images/hero-architecture-foreground.webp"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[center_35%] md:object-[58%_center] lg:object-[60%_center]"
+            quality={95}
+          />
+        </div>
       </div>
 
       {/* 
-        Subtle, Localized Atmospheric Haze:
-        - Replaces the broad opaque wash with a gentle translucent mist.
-        - Left 0-25%: Translucent warm haze (never 100% opaque) preserving architectural visibility underneath.
-        - Center 25-55%: Naturally dissolves into the crisp photograph with no visible vertical seam.
-        - Right 55-100%: 100% transparent - the architectural pavilion, pool, and twilight sky remain at full natural color, contrast, and sharpness.
+        Layer 4: Localized Atmospheric Left-Edge Haze
+        - Subtle, localized warm haze focused on the left edge for text contrast.
+        - Naturally dissolves into the crisp photograph by 50% without covering the pavilion or reflection pool.
       */}
-      <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-background/75 via-background/40 via-35% to-transparent to-60% pointer-events-none" />
+      <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-background/75 via-background/35 via-30% to-transparent to-55% pointer-events-none z-[3]" />
 
-      {/* 
-        Mobile Atmospheric Mist:
-        Translucent top-down gradient providing clear contrast for headline while preserving full villa and pool visibility below.
-      */}
-      <div className="md:hidden absolute inset-0 bg-gradient-to-b from-background/80 via-background/45 via-45% to-transparent pointer-events-none" />
+      {/* Mobile Atmospheric Mist */}
+      <div className="md:hidden absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 via-40% to-transparent pointer-events-none z-[3]" />
     </div>
   );
 }

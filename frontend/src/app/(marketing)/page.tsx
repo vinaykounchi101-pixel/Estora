@@ -37,54 +37,54 @@ export default function HomePage() {
           <ParallaxHeroImage />
 
           {/* Hero Content Layer */}
-          <Container className="relative z-10 py-20 sm:py-28 lg:py-36">
-            <div className="max-w-3xl space-y-8 p-4 sm:p-6 -ml-4 sm:-ml-6 rounded-2xl bg-gradient-to-r from-background/60 via-background/30 to-transparent backdrop-blur-[1px]">
+          <Container className="relative z-10 py-16 sm:py-24 lg:py-32">
+            <div className="max-w-2xl space-y-7 sm:space-y-8">
               {/* Eyebrow / Overline */}
-              <div className="animate-entrance-1 inline-flex items-center gap-2.5">
-                <Badge variant="sage" className="gap-1.5 py-1 px-3.5">
-                  <span className="w-1.5 h-1.5 rounded-pill bg-[#47765A] dark:bg-[#C4CEB8] animate-pulse" />
+              <div className="animate-entrance-1 inline-flex flex-wrap items-center gap-2.5">
+                <Badge variant="sage" className="gap-1.5 py-1 px-3 shadow-xs">
+                  <span className="w-1.5 h-1.5 rounded-pill bg-[#3D694E] dark:bg-[#C4CEB8] animate-pulse" />
                   <span>Estora Intelligence v1.0</span>
                 </Badge>
-                <span className="text-xs font-sans text-text-muted tracking-wider uppercase font-medium">
+                <span className="text-xs font-sans text-text-muted uppercase tracking-wider font-medium">
                   Validated Pune Residential Primary Market
                 </span>
               </div>
 
               {/* Majestic Editorial Headline */}
-              <h1 className="animate-entrance-2 font-serif text-4xl sm:text-6xl lg:text-7xl font-medium tracking-tight text-text leading-[1.08] drop-shadow-[0_1px_1px_rgba(255,255,255,0.7)] dark:drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+              <h1 className="animate-entrance-2 font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] font-medium tracking-tight text-text leading-[1.1] max-w-xl drop-shadow-[0_1px_2px_rgba(255,255,255,0.8)] dark:drop-shadow-[0_2px_6px_rgba(0,0,0,0.85)]">
                 Smarter Decisions for a Brighter Future
               </h1>
 
               {/* Refined Supporting Copy */}
-              <p className="animate-entrance-3 font-sans text-base sm:text-lg lg:text-xl text-text-muted leading-relaxed max-w-2xl">
+              <p className="animate-entrance-3 font-sans text-base sm:text-lg text-text-muted leading-relaxed max-w-xl">
                 Predict residential property prices, explore verified spatial trends, and evaluate real estate
                 decisions with empirical machine-learning models and leakage-free cross-validation.
               </p>
 
               {/* Action Buttons */}
-              <div className="animate-entrance-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+              <div className="animate-entrance-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1">
                 <Link href="#valuation-section">
-                  <Button size="lg" variant="primary" className="w-full sm:w-auto gap-2.5 shadow-sm text-sm">
+                  <Button size="lg" variant="primary" className="w-full sm:w-auto gap-2.5 shadow-sm text-sm font-medium px-6 py-3">
                     <span>Explore Valuation Model</span>
                     <ArrowDown className="w-4 h-4 text-sage dark:text-[#B17D58]" />
                   </Button>
                 </Link>
                 <Link href="#provenance">
-                  <Button size="lg" variant="outline" className="w-full sm:w-auto text-sm">
+                  <Button size="lg" variant="outline" className="w-full sm:w-auto text-sm font-medium px-6 py-3 bg-background/70 dark:bg-surface/70 backdrop-blur-sm border-border hover:bg-background/95 dark:hover:bg-surface/95">
                     Audit Provenance & Data
                   </Button>
                 </Link>
               </div>
 
               {/* Subtitle Integrity Badge */}
-              <div className="animate-entrance-4 pt-4 flex items-center gap-3 text-xs text-text-muted font-sans">
+              <div className="animate-entrance-4 pt-2 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs text-text-muted font-sans">
                 <span className="inline-flex items-center gap-1.5 text-text font-medium">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-sage" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#3D694E] dark:text-sage" />
                   1,833 Audited Records
                 </span>
-                <span className="text-border">•</span>
+                <span className="text-border" aria-hidden="true">•</span>
                 <span>GroupKFold CV (₹16.07L)</span>
-                <span className="text-border">•</span>
+                <span className="text-border" aria-hidden="true">•</span>
                 <span>~6.6ms Model Inference</span>
               </div>
             </div>
@@ -239,7 +239,7 @@ export default function HomePage() {
         {/* =========================================================================
             4. CORE CAPABILITIES (REFINED GRID)
         ========================================================================= */}
-        <section id="capabilities" className="py-20 sm:py-28 border-b border-border/60 bg-surface/50 transition-colors">
+        <section id="provenance" className="py-20 sm:py-28 border-b border-border/60 bg-surface/50 transition-colors scroll-mt-20">
           <Container className="space-y-16">
             <ScrollReveal direction="up">
               <div className="max-w-2xl space-y-3">
