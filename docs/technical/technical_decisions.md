@@ -165,6 +165,25 @@ Records architectural decision records (ADRs), rationales, and technical trade-o
   - Completely honest, reproducible, and verifiable performance and valuation claims across all marketing and application screens.
   - Consistent visual rhythm, standardized typography scale, and unified component styling across all 21 application routes.
 
+---
 
+## ADR-010: Oversized Architectural Brand Wordmark and Synchronized Foreground Occlusion Layering
 
+- **Date:** 2026-10-26
+- **Status:** Approved
+- **Context:**
+  The landing-page hero required a distinct, high-impact editorial identity blending oversized brand typography naturally with the architectural villa photograph without appearing as a superficial text overlay or watermark. The letters needed to sit in physical space behind the villa's roofline, cantilever, terrace, and pool reflection.
+- **Decision:**
+  - Introduce an oversized uppercase `ESTORA` wordmark in `frontend/src/components/motion/parallax-hero-image.tsx` using `font-serif` (Playfair Display) with wide letter tracking (`0.14em` to `0.26em`) and dynamic responsive scaling (`text-[15vw]` down to `text-[12vw]`).
+  - Implement a synchronized 4-layer composition:
+    1. Layer 1: Base architectural photograph (`hero-architecture.jpg`).
+    2. Layer 2: Oversized ESTORA wordmark in the twilight sky.
+    3. Layer 3: Anti-aliased 1:1 foreground building cutout (`hero-architecture-foreground.webp`, 249 KB) obscuring the letters behind concrete slabs and foliage.
+    4. Layer 4: Organic, localized left-edge haze dissolving by 50% into the photograph.
+  - Bind all three visual layers into the same transform wrapper (`translate3d(0, ${offsetY}px, 0)`), ensuring zero drift during scroll parallax.
+  - Eliminate synthetic background cards in `frontend/src/app/(marketing)/page.tsx` for a clean editorial headline composition.
+- **Consequences:**
+  - Delivers a portfolio-grade, magazine-editorial hero experience where typography feels physically integrated into the architecture.
+  - Zero performance regression (WebP asset is ~249 KB; production build compiles 21/21 routes with 0 errors).
+  - Clean separation across light and dark modes with full accessibility.
 

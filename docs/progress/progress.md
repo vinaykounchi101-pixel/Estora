@@ -81,15 +81,18 @@ Tracks session progress, completed milestones, and pending tasks.
   - Updated Valuation Standards & Methodology panels to strictly distinguish 5-Fold Spatial GroupKFold Cross-Validation (MAE: ₹16.07L) from Frozen 20% Held-Out Test Evaluation (MAE: ₹17.35L, RMSE: ₹40.71L, R²: 0.807) and empirical latency (~6.6ms inference engine mean).
   - Standardized Portfolio Dashboard (`/dashboard`) and Personal Analytics (`/analytics`) ensuring all metrics derive exclusively from authenticated user records without fabricated market indices.
   - Implemented honest disclosures for deferred capabilities: Saved property bookmarking (`/properties` - Phase P2 roadmap) and automated password reset mailer (`/forgot-password` - SRS FR-AUTH-006 deferred).
-  - Verified full test suite across repository: 70 frontend vitest tests, 89 backend pytest tests, 26 ML pytest tests (185 tests total passing).
-  - Production Next.js build verified (21/21 routes prerendered/compiled with 0 errors).
+- [x] **Phase 10 (Final Hero Art Direction & Composition Polish)**:
+  - Integrated oversized architectural `ESTORA` wordmark into `frontend/src/components/motion/parallax-hero-image.tsx` using a synchronized 4-layer composition (base photograph, wordmark, subpixel foreground building cutout, and localized organic haze).
+  - Generated optimized 1:1 foreground WebP silhouette (`frontend/public/images/hero-architecture-foreground.webp`, 249 KB) so that the concrete cantilever, upper roofline, terrace, and trees naturally obscure the letters with anti-aliased subpixel fidelity.
+  - Synchronized scroll parallax across base image, wordmark, and foreground layer for zero-drift physical depth.
+  - Eliminated synthetic card container in `frontend/src/app/(marketing)/page.tsx`, refining headline balance (`text-4xl sm:text-5xl md:text-6xl lg:text-[4rem]`), concise eyebrow, and verified metrics.
+  - Added smooth anchor navigation for `#provenance` to the empirical evidence section.
+  - Established ADR-010 in `docs/technical/technical_decisions.md`.
+  - Archived verbatim prompt to `prompts/frontend/002_hero_art_direction_and_visual_polish.md`.
+  - Re-verified 185/185 tests passing and 21/21 routes compiling cleanly.
 
 ### Current State
-- All roadmap phases (Phases 1 through 9 / Phase A, B, and C) completed and verified.
+- All roadmap phases (Phases 1 through 10 / Sprints A, B, and C + Final Art Direction) completed and verified.
 - **185 automated tests passing** (70 Frontend Vitest + 89 Backend Pytest + 26 ML Pipeline Pytest).
 - TypeScript compile (`tsc --noEmit`) and Next.js production bundle build (`npm run build`) passing with zero errors.
 - Both FastAPI backend (`http://127.0.0.1:8000`) and Next.js frontend (`http://localhost:3000`) verified and operational.
-
-
-
-
